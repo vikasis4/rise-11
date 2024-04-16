@@ -15,9 +15,11 @@ function Header() {
   }
 
   return (
-    <div className="p-4 w-full fixed top-0 bg-blue-500 text-white shadow-md text-2xl flex justify-between">
-      <div onClick={handleclick2}>{headerName}</div>
-      <div onClick={handleclick}>Login</div>
+    <div className="w-full shadow-md mb-12">
+      <div className="px-4 py-4 shadow-md bg-blue-500 w-full fixed top-0 text-white text-2xl flex justify-between">
+        <div onClick={handleclick2}>{headerName}</div>
+        <div onClick={handleclick}>Login</div>
+      </div>
     </div>
   )
 }

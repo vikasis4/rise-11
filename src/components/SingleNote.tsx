@@ -7,21 +7,21 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import EditNote from './EditNote'
+import DeleteNote from './DeleteNote'
 
 
 
 function SingleNote({ desc }: { desc: string }) {
     return (
-        <Card>
-            <CardHeader>
+        <Card className='bg-secondary'>
+            <CardHeader className='flex-row rounded-t-md mb-2 py-2 flex justify-between items-center'>
+                <DeleteNote />
+                <EditNote />
             </CardHeader>
             <CardContent>
                 <CardDescription>{desc}</CardDescription>
-                {/* <p>Card Content</p> */}
             </CardContent>
-            <CardFooter>
-                <p>Card Footer</p>
-            </CardFooter>
         </Card>
 
     )

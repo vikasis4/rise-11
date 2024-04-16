@@ -1,2 +1,2 @@
-export const headerName = "Rise11/ToDoList"
+export const headerName = "Advance Notion"
 export const NoNote = "No Notes to show here"
