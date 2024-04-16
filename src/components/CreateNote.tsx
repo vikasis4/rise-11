@@ -9,6 +9,7 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import React from "react"
+import { PlusCircledIcon } from "@radix-ui/react-icons"
 
 
 
@@ -24,17 +25,21 @@ export function CreateNote({ className, ...props }: CardProps) {
     return (
         <Card className={cn("w-[380px]", className)} {...props}>
             <CardHeader>
-                <CardTitle>Create New Task</CardTitle>
+                <CardTitle className="flex gap-2">
+                    <PlusCircledIcon />
+                    Create New Task
+                </CardTitle>
             </CardHeader>
-            <CardContent className="grid gap-4">
-                <div>
-                    <textarea 
-                    className="border-2 rounded-md"
-                     title="Create New Task" value={text} onChange={handleChange} />
-                </div>
+            <CardContent className="w-full">
+                <textarea
+                    className="border-2 w-full rounded-md"
+                    title="Create New Task"
+                    value={text}
+                    onChange={handleChange}
+                />
             </CardContent>
             <CardFooter>
-                <Button className="w-full">
+                <Button className="w-full bg-blue-500">
                     Submit
                 </Button>
             </CardFooter>

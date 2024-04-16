@@ -1,12 +1,18 @@
+import Form from '@/components/auth/Form'
+import Google from '@/components/auth/Google'
 import Header from '@/components/Header'
 import React from 'react'
 
 function page() {
   return (
-    <div>
+    <>
       <Header />
-      <h1>Authenticate Page</h1>
-    </div>
+      <div className="flex flex-col justify-center items-center gap-4">
+        <Google />
+        <h1>OR</h1>
+        <Form />
+      </div>
+    </>
   )
 }
 
