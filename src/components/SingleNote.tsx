@@ -9,15 +9,15 @@ import {
 } from "@/components/ui/card"
 
 
-function SingleNote() {
+
+function SingleNote({ desc }: { desc: string }) {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>Card Description</CardDescription>
             </CardHeader>
             <CardContent>
-                <p>Card Content</p>
+                <CardDescription>{desc}</CardDescription>
+                {/* <p>Card Content</p> */}
             </CardContent>
             <CardFooter>
                 <p>Card Footer</p>
