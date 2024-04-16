@@ -2,7 +2,8 @@
 import { headerName } from '@/config/constants'
 import { useRouter } from 'next/navigation'
 import React from 'react'
-
+import {Card} from "@/components/ui/card"
+import { RocketIcon } from '@radix-ui/react-icons'
 
 function Header() {
 
@@ -15,12 +16,14 @@ function Header() {
   }
 
   return (
-    <div className="w-full shadow-md mb-12">
-      <div className="px-4 py-4 shadow-md bg-blue-500 w-full fixed top-0 text-white text-2xl flex justify-between">
-        <div onClick={handleclick2}>{headerName}</div>
-        <div onClick={handleclick}>Login</div>
-      </div>
-    </div>
+    <>
+      <div className="h-12"></div>
+      <Card className="w-[90%] bg-blue-600 fixed top-0 flex flex-row justify-between items-center my-4 p-4">
+        <div className="text-white" onClick={handleclick2}>{headerName}</div>
+        <RocketIcon color="white" height="30" width="30" />
+        <div className="text-white" onClick={handleclick}>Login</div>
+      </Card>
+    </>
   )
 }
 

@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config()
 
-
-const URL = "mongodb://localhost:27017/rise11"
+const URL = process.env.MONGOURL
 mongoose.set("strictQuery", false);
 const connectToDb = async () => {
     await mongoose.connect(URL).then(() => {

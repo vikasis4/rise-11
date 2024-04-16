@@ -10,6 +10,7 @@ const createToken = async (data) => {
             name: data.name,
         }), process.env.secretTokenKey);
         data.tokens.push({ token });
+        await data.save();
         return token;
     } catch (error) {
         console.log(error);

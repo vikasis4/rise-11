@@ -23,6 +23,6 @@ app.listen(port, (err)=>{
     if (err) {
         console.log('SERVER CRASHED', err);
     }else{
-        console.log('listening on port ' + port);
+        console.log('Listening on the PORT: ' + port);
     }
 })
