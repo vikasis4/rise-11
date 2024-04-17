@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card"
 import React from "react"
 import { PlusCircledIcon } from "@radix-ui/react-icons"
+import NotesQuery from "@/store/notes/notesQuery"
 
 
 
@@ -18,9 +19,15 @@ type CardProps = React.ComponentProps<typeof Card>
 export function CreateNote({ className, ...props }: CardProps) {
 
     const [text, setText] = React.useState('');
+    const { Create } = NotesQuery()
     const handleChange = (event: any) => {
         setText(event.target.value);
     }
+    const handleClick = () => {
+        Create.CreateNote({text});
+        setText('');
+    }
+
 
     return (
         <Card className={cn("w-[380px]", className)} {...props}>
@@ -39,7 +46,7 @@ export function CreateNote({ className, ...props }: CardProps) {
                 />
             </CardContent>
             <CardFooter>
-                <Button className="w-full bg-blue-500">
+                <Button onClick={handleClick} className="w-full bg-blue-500">
                     Submit
                 </Button>
             </CardFooter>

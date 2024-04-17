@@ -15,7 +15,7 @@ function UserQuery() {
 
     var { data: user } = useQuery({
         queryKey: ['user'],
-        queryFn: () => fetch(API_TokenVeify + localStorage.getItem('token')).then((res) => res.json()),
+        queryFn: () => fetch(API_TokenVeify + localStorage.getItem('token')).then((res) => res.json())
     })
 
     /////////////////////////// GOOGLE ///////////////////////////////

@@ -13,7 +13,10 @@ import {
 import { TrashIcon } from '@radix-ui/react-icons'
 
 
-function DeleteNote() {
+function DeleteNote({fxn}:any) {
+
+
+
     return (
         <AlertDialog>
             <AlertDialogTrigger>
@@ -29,7 +32,7 @@ function DeleteNote() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction className='bg-red-500'>Delete</AlertDialogAction>
+                    <AlertDialogAction onClick={fxn} className='bg-red-500'>Delete</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

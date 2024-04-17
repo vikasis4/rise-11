@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import {
     AlertDialog,
@@ -11,24 +12,35 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Pencil2Icon } from '@radix-ui/react-icons'
+import { Input } from './ui/input';
 
 
-function EditNote() {
+function EditNote({ Edit_Note, data }: any) {
+
+    const [text, setText] = React.useState(data.desc);
+    const handleChange = (e: any) => {
+        setText(e.target.value)
+    }
+
     return (
         <AlertDialog>
             <AlertDialogTrigger>
-            <Pencil2Icon height='24' width='24' />
+                <Pencil2Icon height='24' width='24' />
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
                     <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete your account
-                        and remove your data from our servers.
+                        <Input
+                            className='font-sans'
+                            value={text}
+                            name="desc"
+                            onChange={handleChange}
+                        />
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction>Submit</AlertDialogAction>
+                    <AlertDialogAction onClick={() => Edit_Note({ noteId: data.id, text })}>Submit</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

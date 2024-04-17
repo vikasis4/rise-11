@@ -9,15 +9,19 @@ import {
 } from "@/components/ui/card"
 import EditNote from './EditNote'
 import DeleteNote from './DeleteNote'
+import NotesQuery from '@/store/notes/notesQuery'
 
 
 
-function SingleNote({ desc }: { desc: string }) {
+function SingleNote({ desc, id }: { desc: string, id: string }) {
+
+    const { Delete, Edit_Note } = NotesQuery()
+
     return (
-        <Card className='bg-secondary'>
+        <Card className='bg-secondary w-[90%]'>
             <CardHeader className='flex-row rounded-t-md mb-2 py-2 flex justify-between items-center'>
-                <DeleteNote />
-                <EditNote />
+                <DeleteNote fxn={() => Delete.DeletNote({ id })} />
+                <EditNote Edit_Note={Edit_Note} data={{ desc, id }} />
             </CardHeader>
             <CardContent>
                 <CardDescription>{desc}</CardDescription>
