@@ -19,6 +19,9 @@ function Header() {
   const handleclick2 = () => {
     router.push('/')
   }
+  const handleclick3 = () => {
+    router.push('/account')
+  }
 
   return (
     <>
@@ -28,7 +31,7 @@ function Header() {
         <RocketIcon color="white" height="30" width="30" />
         {
           user ?
-            <div className="text-white" onClick={handleclick}>{user.name.slice(0,5)}</div>
+            <div className="text-white" onClick={handleclick3}>{user.name.slice(0,5)}</div>
             :
             <div className="text-white" onClick={handleclick}>Auth</div>
         }

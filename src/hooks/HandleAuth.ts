@@ -5,7 +5,7 @@ const HandleAuth = () => {
 
     const { toast } = useToast()
 
-    const HandleAuthFxn = (data: any) => {
+    const HandleAuthFxn = ({ data, type }: any) => {
 
         if (data.status == 'noUser') {
             toast({
@@ -29,7 +29,8 @@ const HandleAuth = () => {
             })
             return false
         } else if (data.status == 'true') {
-            localStorage.setItem('token', data.token)
+            if (type == 'google') localStorage.setItem('token', data.token)
+            if (type == 'form') return true;
             toast({
                 title: "Success",
                 description: "Authentication done successfully",
