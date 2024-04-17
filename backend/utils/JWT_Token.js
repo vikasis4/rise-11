@@ -20,8 +20,14 @@ const createToken = async (data) => {
 
 const verifyToken = async (req, res) => {
     try {
-        var token = jwt.verify(req.body.token, process.env.secretTokenKey);
-        res.json({ status: 'true', token });
+
+        if (req.params.token.length < 5) {
+            res.json({ status: 'false' });
+            return
+        }
+
+        var token = jwt.verify(req.params.token, process.env.secretTokenKey);
+        res.json({ status: 'true', ...token });
     } catch (error) {
         console.log(error);
         res.json({ status: 'false' });

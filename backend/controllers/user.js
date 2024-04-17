@@ -8,12 +8,10 @@ const googleSignIn = async (req, res) => {
     try {
         const { email } = req.body;
         var user = await User.findOne({ email: email });
-
-        if (user.length == 0) {
+        if (!user) {
             res.json({ status: 'noUser' });
             return
         }
-
         var token = await createToken(user);
         res.json({ status: 'true', token });
     } catch (error) {
@@ -26,9 +24,10 @@ const googleSignIn = async (req, res) => {
 const googleSignUp = async (req, res) => {
     try {
         const { email, name } = req.body;
+
         var user = await User.findOne({ email });
 
-        if (user.length > 0) {
+        if (user) {
             res.json({ status: 'duplicate' });
             return
         }
@@ -47,7 +46,7 @@ const signUp = async (req, res) => {
     try {
         const { email, name } = req.body;
         var user = await User.findOne({ email });
-        if (user.length > 0) {
+        if (user) {
             res.json({ status: 'duplicate' });
             return
         }
@@ -69,7 +68,7 @@ const signIn = async (req, res) => {
     try {
         const { email } = req.body;
         var user = await User.findOne({ email });
-        if (user.length == 0) {
+        if (!user) {
             res.json({ status: 'noUser' });
             return
         }

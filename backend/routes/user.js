@@ -6,7 +6,7 @@ const verifyOTP = require('../controllers/otp')
 
 router.route('/google/signup').post(googleSignUp);
 router.route('/google/signin').post(googleSignIn);
-router.route('/jwt/verify').post(verifyToken);
+router.route('/jwt/verify/:token').get(verifyToken);
 
 router.route('/signIn').post(signIn);
 router.route('/signUp').post(signUp);

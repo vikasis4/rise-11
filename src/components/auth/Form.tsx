@@ -12,9 +12,8 @@ import {
 import { Input } from "@/components/ui/input"
 
 
-type CardProps = React.ComponentProps<typeof Card>
 
-function Form({ className, ...props }: CardProps) {
+function Form({ className, type }: any) {
 
   const [email, setEmail] = React.useState();
   const handleChange = (event: any) => {
@@ -22,19 +21,37 @@ function Form({ className, ...props }: CardProps) {
   }
 
   return (
-    <Card className={cn("w-[380px]", className)} {...props}>
+    <Card className={cn("w-[380px]", className)}>
       <CardHeader>
         <CardTitle className="flex gap-2">
-          Enter Your Email
+          Enter Your Name
         </CardTitle>
       </CardHeader>
       <CardContent className="w-full">
-        <Input 
-        className='font-sans'
-        value={email} 
-        onChange={handleChange} 
+        <Input
+          className='font-sans'
+          value={email}
+          onChange={handleChange}
         />
       </CardContent>
+      {type == 'Register' ?
+        <>
+          <CardHeader>
+            <CardTitle className="flex gap-2">
+              Enter Your Email
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="w-full">
+            <Input
+              className='font-sans'
+              value={email}
+              onChange={handleChange}
+            />
+          </CardContent>
+        </>
+        :
+        null
+      }
       <CardFooter>
         <Button className="w-full bg-blue-500">
           Submit

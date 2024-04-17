@@ -1,35 +1,27 @@
 'use client'
 import { GoogleLogin, } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
-import { googleAuth } from '@/config/api';
-import axios from 'axios'
 import { useToast } from '@/components/ui/use-toast';
+import UserQuery from '@/store/user/UserQuery';
+import AlertComp from '../Alert';
 
 
-function Google() {
+function Google({ type }: { type: string }) {
 
     const { toast } = useToast();
-    // const dispatch = useAppDispatch();
+    const { google } = UserQuery();
 
     const handleSuccess = async (credentialResponse: any) => {
-        
         const decoded = jwtDecode<any>(credentialResponse.credential);
-
-        // dispatch(setIsLoading(true))
-        await axios.post(googleAuth, { email: decoded.email, name: decoded.name }).then((response: any) => {
-            if (response.data.status === 'true') {
-                localStorage.setItem('JWT_token', response.data.token);
-                location.reload()
-            } else {
-                toast({
-                    variant: "destructive",
-                    title: "Warning",
-                    description: "Something went wrong",
-                })
-            }
-        })
-        // dispatch(setIsLoading(false))
+        if (type == 'Login') {
+            google.signIn.GoogleSignIn(decoded.email)
+        } else {
+            google.signUp.GoogleSignUp({ email: decoded.email, name: decoded.name })
+        }
     };
+
+    if (google.signIn.Error_GSI || google.signUp.Error_GSU) return <AlertComp type="red" title="Error" desc="Something Went Wrong" />
+    if (google.signIn.Pending_GSI || google.signUp.Pending_GSU) return <AlertComp type="lol" title="Processing" desc="Please wait while the Account is being created" />
 
     const handleError = () => {
         toast({
