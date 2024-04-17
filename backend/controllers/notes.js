@@ -54,7 +54,7 @@ const createNote = async (req, res) => {
     try {
         const { userId, note } = req.body;
         var noteList = await Notes.findOne({ userId });
-        if (noteList.length == 0) {
+        if (noteList?.length == 0 || !noteList) {
             noteList = await Notes.create({
                 userId
             })

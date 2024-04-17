@@ -19,15 +19,15 @@ function page() {
   }, [user?.status])
 
   return (
-    <div className="flex h-screen flex-col items-center bg-secondary">
+    <div className="flex h-screen lg:h-full flex-1 pb-20 flex-col items-center bg-secondary">
       <Header />
-      <div className="flex h-full flex-col justify-center items-center gap-8">
+      <div className="flex h-full mt-4 flex-col justify-center items-center gap-8">
         <h1 className="text-black text-4xl font-serif">{authType}</h1>
         <Google type={authType} />
         <h1>OR</h1>
         <Form type={authType} />
         <div className="flex gap-8">
-          <h1 className="text-black font-semibold">{authType == 'Login' ? 'Do Not have any Account ?' : 'Already have an Account ?'}</h1>
+          <h1 className="text-black bg-secondary font-semibold">{authType == 'Login' ? 'Do Not have any Account ?' : 'Already have an Account ?'}</h1>
           <button onClick={() => setAuthType(authType == 'Login' ? 'Register' : 'Login')} className="text-blue-500">{authType == 'Login' ? 'Register' : 'Login'}</button>
         </div>
       </div>

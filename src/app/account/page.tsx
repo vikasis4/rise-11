@@ -4,6 +4,14 @@ import { Button } from '@/components/ui/button'
 import UserQuery from '@/store/user/UserQuery'
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 function page() {
 
@@ -20,11 +28,17 @@ function page() {
   }, [user?.status])
 
   return (
-    <div className="flex flex-col justify-center h-screen items-center">
+    <div className="flex bg-secondary flex-col justify-start h-screen items-center">
       <Header />
-      <h1 className="font-semibold font-serif text-2xl">{user.name}</h1>
-      <h1 className="mt-2 font-serif font-semibold text-2xl">{user.email}</h1>
-      <Button onClick={logout} variant="destructive" className="w-[90%] mt-8 shadow-md" >LogOut</Button>
+      <Card className="w-[90%] lg:w-[50%] mt-24">
+        <CardHeader>
+          <CardTitle>{user.name}</CardTitle>
+          <CardDescription>{user.email}</CardDescription>
+        </CardHeader>
+        <CardFooter>
+          <Button onClick={logout} variant="destructive" className="w-full mt-8 shadow-md" >LogOut</Button>
+        </CardFooter>
+      </Card>
     </div>
   )
 }

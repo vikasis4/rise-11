@@ -24,19 +24,18 @@ function Header() {
   }
 
   return (
-    <>
-      <div className="h-12"></div>
-      <Card className="w-[90%] bg-blue-600 fixed top-0 flex flex-row justify-between items-center my-4 p-4">
-        <div className="text-white" onClick={handleclick2}>{headerName}</div>
+    <div className="flex-2 flex w-full items-center justify-center">
+      <Card className="w-[90%] bg-blue-600 flex flex-row justify-between items-center my-4 p-4 lg:px-8">
+        <div className="text-white hover:cursor-pointer  lg:font-semibold text-2xl" onClick={handleclick2}>{headerName}</div>
         <RocketIcon color="white" height="30" width="30" />
         {
           user ?
-            <div className="text-white" onClick={handleclick3}>{user.name.slice(0,5)}</div>
+            <div className="text-white hover:cursor-pointer lg:font-semibold text-2xl" onClick={handleclick3}>{user.name.slice(0, 5)}</div>
             :
-            <div className="text-white" onClick={handleclick}>Auth</div>
+            <div className="text-white hover:cursor-pointer lg:font-semibold text-2xl" onClick={handleclick}>Auth</div>
         }
       </Card>
-    </>
+    </div>
   )
 }
 

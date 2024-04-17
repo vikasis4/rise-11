@@ -18,7 +18,7 @@ function SingleNote({ desc, id }: { desc: string, id: string }) {
     const { Delete, Edit_Note } = NotesQuery()
 
     return (
-        <Card className='bg-secondary w-[90%]'>
+        <Card className='bg-white bg:w-[30%] bg:flex-wrap w-[90%]'>
             <CardHeader className='flex-row rounded-t-md mb-2 py-2 flex justify-between items-center'>
                 <DeleteNote fxn={() => Delete.DeletNote({ id })} />
                 <EditNote Edit_Note={Edit_Note} data={{ desc, id }} />
