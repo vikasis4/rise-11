@@ -67,6 +67,7 @@ function NotesQuery() {
 
     if (!notes || notes?.status == 'false') { notes = { notes: [] } }
     return {
+        user,
         notes: notes.notes,
         Create: {
             CreateNote,

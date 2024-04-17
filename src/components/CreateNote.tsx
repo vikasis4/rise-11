@@ -11,20 +11,28 @@ import {
 import React from "react"
 import { PlusCircledIcon } from "@radix-ui/react-icons"
 import NotesQuery from "@/store/notes/notesQuery"
-
-
+import { useToast } from "@/components/ui/use-toast"
 
 type CardProps = React.ComponentProps<typeof Card>
 
 export function CreateNote({ className, ...props }: CardProps) {
 
     const [text, setText] = React.useState('');
-    const { Create } = NotesQuery()
+    const { toast } = useToast()
+    const { Create, user } = NotesQuery()
     const handleChange = (event: any) => {
         setText(event.target.value);
     }
-    const handleClick = () => {
-        Create.CreateNote({text});
+    const handleClick = () => {        
+        if (!user) {
+            toast({
+                variant: "destructive",
+                title: "Warning",
+                description: "Please SignIn/SignUp to Creates Notes",
+            });
+            return
+        }
+        Create.CreateNote({ text });
         setText('');
     }
 
