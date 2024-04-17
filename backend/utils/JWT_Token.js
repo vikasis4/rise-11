@@ -21,7 +21,7 @@ const createToken = async (data) => {
 const verifyToken = async (req, res) => {
     try {
 
-        if (req.params.token.length < 5) {
+        if (req.params.token.length < 5 || !req.params.token) {
             res.json({ status: 'false' });
             return
         }
